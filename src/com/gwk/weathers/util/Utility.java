@@ -15,7 +15,8 @@ import com.gwk.weathers.model.Province;
 public class Utility
 {
 	/**
-	 * 解析和处理服务器返回的Province数据
+	 * 解析和处理服务器返回的Province数据,存储到Province表
+	 * @return boolean 是否存储成功
 	 */
 	public synchronized static boolean handleProvincesResponse(
 			WeatherSDB weatherSDB, String response)
@@ -42,7 +43,8 @@ public class Utility
 	}
 
 	/**
-	 * 解析和处理服务器返回的City数据
+	 * 解析和处理服务器返回的City数据,存储到City表
+	 * @return boolean 是否存储成功
 	 */
 	public synchronized static boolean handleCitiesResponse(
 			WeatherSDB weatherSDB, String response, int provinceId)
@@ -70,7 +72,8 @@ public class Utility
 	}
 
 	/**
-	 * 解析和处理服务器返回的County数据
+	 * 解析和处理服务器返回的County数据,存储到County表
+	 * @return boolean 是否存储成功
 	 */
 	public synchronized static boolean handleCountiesResponse(
 			WeatherSDB weatherSDB, String response, int CityId)
@@ -88,7 +91,7 @@ public class Utility
 					county.setCountyCode(array[0]);
 					county.setCountyName(array[1]);
 					county.setCityId(CityId);
-					// 将解析出来的数据存储到City表
+					// 将解析出来的数据存储到County表
 					weatherSDB.saveCounty(county);
 				}
 				judge = true;

@@ -17,6 +17,7 @@ import android.database.Cursor;
  *时间：2015年12月2日上午9:33:42
  */
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * 城市天气数据库操作
@@ -107,7 +108,7 @@ public class WeatherSDB
 		if (city != null)
 		{
 			ContentValues values = new ContentValues();
-			values.put("City_name", city.getCityName());
+			values.put("city_name", city.getCityName());
 			values.put("city_code", city.getCityCode());
 			values.put("Province_id", city.getProvinceId());
 			db.insert("City", null, values);
@@ -143,18 +144,22 @@ public class WeatherSDB
 		return cityList;
 	}
 	
-	/**County实例存储的到数据库
+	/**
+	 * County实例存储的到数据库
 	 */
 	public void saveCounty(County county)
 	{
 		if (county != null)
 		{
 			ContentValues values = new ContentValues();
-			values.put("City_name", county.getCountyName());
-			values.put("city_code", county.getCountyCode());
-			values.put("City_id", county.getCityId());
+			values.put("county_name", county.getCountyName());
+			values.put("county_code", county.getCountyCode());
+			values.put("city_id", county.getCityId());
 			db.insert("County", null, values);
+			kLog.i("WeatherSDB", county.getCountyName()+"储存成功");
 		}
+		
+		
 	}
 
 	/**
@@ -174,12 +179,15 @@ public class WeatherSDB
 				county.setCountyName(cursor.getString(cursor.getColumnIndex("county_name")));
 				county.setCountyCode(cursor.getString(cursor.getColumnIndex("county_code")));
 				county.setCityId(cityId);
+				countyList.add(county);
 			} while (cursor.moveToNext());
 			if (cursor != null)
 			{
 				cursor.close();
 			}
 		}
+
+
 		return countyList;
 	}
 }
