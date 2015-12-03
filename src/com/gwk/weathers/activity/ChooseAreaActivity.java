@@ -310,6 +310,11 @@ public class ChooseAreaActivity extends Activity
 			queryProvinces();
 		} else
 		{
+			if (isFromWeatherActivity)
+			{
+				Intent intent=new Intent(this,WeatherActivity.class);
+				startActivity(intent);
+			}
 			super.onBackPressed();
 		}
 
@@ -319,8 +324,9 @@ public class ChooseAreaActivity extends Activity
 	 */
 	private void isCitySelected()
 	{
+		isFromWeatherActivity=getIntent().getBooleanExtra("from_weather_activity", false);
 		SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
-		if (prefs.getBoolean("city_selected", false))
+		if (prefs.getBoolean("city_selected", false)&&!isFromWeatherActivity)
 		{
 			Intent intent=new Intent(this, WeatherActivity.class);
 			startActivity(intent);
@@ -328,4 +334,9 @@ public class ChooseAreaActivity extends Activity
 			return;
 		}
 	}
+	
+	/**
+	 * 是否从WeatherActivity跳转来
+	 */
+	private boolean isFromWeatherActivity;
 }

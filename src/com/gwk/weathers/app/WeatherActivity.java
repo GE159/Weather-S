@@ -2,10 +2,12 @@ package com.gwk.weathers.app;
 
 import com.gwk.weathers.activity.ChooseAreaActivity;
 import com.gwk.weathers.db.kLog;
+import com.gwk.weathers.receiver.AutoUpdateReceiver;
 import com.gwk.weathers.util.HttpCallbackListener;
 import com.gwk.weathers.util.HttpUtil;
 import com.gwk.weathers.util.Utility;
 
+import android.R.string;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,8 +34,8 @@ public class WeatherActivity extends Activity
 	private TextView temp2Text;
 	private TextView currentDateText;
 	
-	private static final String COUNTYCODE="county_code";
-	private static final String WEATHERCODE="weather_Code";
+	public static final String COUNTYCODE="county_code";
+	public static final String WEATHERCODE="weather_Code";
 		
 
 	@Override
@@ -88,6 +90,10 @@ public class WeatherActivity extends Activity
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		
+		//激活AutoUpdateService服务
+		Intent intent=new Intent(this,AutoUpdateReceiver.class);
+		startService(intent);
 	}
 
 	/**
@@ -165,5 +171,30 @@ public class WeatherActivity extends Activity
 		Intent intent=new Intent(context,WeatherActivity.class);
 		intent.putExtra(COUNTYCODE, countyCode);
 		context.startActivity(intent);
+	}
+	
+	 public void btnOnclik(View v){
+		 switch (v.getId())
+		{
+		case R.id.weather_btn_refresh_weather:
+			publishText.setText("同步中>>>");
+			SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+			String weatherCode=prefs.getString(WEATHERCODE, "");
+			if (!TextUtils.isEmpty(weatherCode))
+			{
+				queryWeatherInfo(weatherCode);
+			}
+			break;
+		case R.id.weather_btn_switch_city:
+			Intent intent= new Intent(this,ChooseAreaActivity.class);
+			intent.putExtra("from_weather_activity", true);
+			startActivity(intent);
+			finish();
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 }

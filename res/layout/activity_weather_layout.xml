@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#484E61" >
+        
 
         <TextView
             android:id="@+id/city_name"
@@ -18,6 +19,25 @@
             android:textColor="#fff"
             android:text="city_name"
             android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/weather_btn_switch_city"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="btnOnclik"
+            android:background="@drawable/home"/>
+
+        <Button
+            android:id="@+id/weather_btn_refresh_weather"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" android:onClick="btnOnclik"
+            android:background="@drawable/refresh" />
+
     </RelativeLayout>
 
     <RelativeLayout
