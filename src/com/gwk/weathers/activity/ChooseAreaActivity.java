@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gwk.weathers.app.R;
+import com.gwk.weathers.app.WeatherActivity;
 import com.gwk.weathers.db.WeatherSDB;
 import com.gwk.weathers.db.kLog;
 import com.gwk.weathers.model.City;
@@ -18,7 +19,10 @@ import android.R.integer;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -68,8 +72,11 @@ public class ChooseAreaActivity extends Activity
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.choose_area);
+		isCitySelected();
 		initView();
 	}
+
+	
 
 	/**
 	 * 初始化控件
@@ -97,11 +104,17 @@ public class ChooseAreaActivity extends Activity
 				{// 城市列表下选择乡镇
 					selectedCity = citieslist.get(position);
 					queryCounties();
+				} else if (currentLevel == LEVEL_COUNTY)
+				{
+					String countyCode=countieslist.get(position).getCountyCode();
+					WeatherActivity.StartWeatherActivity(ChooseAreaActivity.this,countyCode);
+					finish();
 				}
 			}
-		});
 
-		queryProvinces();
+			
+		});
+		queryProvinces(); //加载省级数据
 	}
 
 	/**
@@ -300,5 +313,19 @@ public class ChooseAreaActivity extends Activity
 			super.onBackPressed();
 		}
 
+	}
+	/**
+	 * 判断当前是否已经选择过城市,是否跳转到WeatherActivity
+	 */
+	private void isCitySelected()
+	{
+		SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+		if (prefs.getBoolean("city_selected", false))
+		{
+			Intent intent=new Intent(this, WeatherActivity.class);
+			startActivity(intent);
+			finish();
+			return;
+		}
 	}
 }
