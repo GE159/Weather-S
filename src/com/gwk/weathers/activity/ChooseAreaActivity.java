@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gwk.weathers.app.R;
-import com.gwk.weathers.app.WeatherActivity;
 import com.gwk.weathers.db.WeatherSDB;
 import com.gwk.weathers.db.kLog;
 import com.gwk.weathers.model.City;
@@ -76,8 +75,6 @@ public class ChooseAreaActivity extends Activity
 		initView();
 	}
 
-	
-
 	/**
 	 * 初始化控件
 	 */
@@ -107,7 +104,7 @@ public class ChooseAreaActivity extends Activity
 				} else if (currentLevel == LEVEL_COUNTY)
 				{
 					String countyCode=countieslist.get(position).getCountyCode();
-					WeatherActivity.StartWeatherActivity(ChooseAreaActivity.this,countyCode);
+					MainActivity.StartWeatherActivity(ChooseAreaActivity.this,countyCode);
 					finish();
 				}
 			}
@@ -312,7 +309,7 @@ public class ChooseAreaActivity extends Activity
 		{
 			if (isFromWeatherActivity)
 			{
-				Intent intent=new Intent(this,WeatherActivity.class);
+				Intent intent=new Intent(this,MainActivity.class);
 				startActivity(intent);
 			}
 			super.onBackPressed();
@@ -324,11 +321,11 @@ public class ChooseAreaActivity extends Activity
 	 */
 	private void isCitySelected()
 	{
-		isFromWeatherActivity=getIntent().getBooleanExtra("from_weather_activity", false);
+		isFromWeatherActivity=getIntent().getBooleanExtra(Myconfig.FROMWEATHERFRAG, false);
 		SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
 		if (prefs.getBoolean("city_selected", false)&&!isFromWeatherActivity)
 		{
-			Intent intent=new Intent(this, WeatherActivity.class);
+			Intent intent=new Intent(this, MainActivity.class);
 			startActivity(intent);
 			finish();
 			return;

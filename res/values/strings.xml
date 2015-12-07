@@ -4,5 +4,20 @@
     <string name="app_name">Weather S+</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_weather">WeatherActivity</string>
+    <string name="owner_home_click_login">点击登录</string>
+    <string name="tv_about_us">V5.0</string>
+    <string name="my_home_page">我的主页</string>
+    <string name="widget_theme_store">皮肤小铺</string>
+    <string name="weather_avatar">穿衣助手</string>
+    <string name="recommend_app">发现App</string>
+    <string name="appstore_selector_game">游戏</string>
+    <string name="moji_mall">商城</string>
+    <string name="msp_action_settings">设置</string>
+    <string name="owner_share_account">分享账号</string>
+    <string name="settings">设置</string>
+    <string name="my_airnut">我的空气果</string>
+    <string name="Setting_manual_clearCache">清除缓存</string>
+    <string name="hot">专题</string>
+    <string name="live_view">时景</string>
 
 </resources>

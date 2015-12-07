@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:orientation="vertical"
+    android:background="#27A5F9"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#484E61" >
+        android:background="@android:color/transparent">
         
 
         <TextView
@@ -20,14 +21,17 @@
             android:text="city_name"
             android:textSize="24sp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/weather_btn_switch_city"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:onClick="btnOnclik"
-            android:background="@drawable/home"/>
+          
+            android:background="@null"
+            android:src="@drawable/city_btn_selector"
+            android:scaleType="fitXY"
+            />
 
         <Button
             android:id="@+id/weather_btn_refresh_weather"
@@ -35,8 +39,8 @@
             android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp" android:onClick="btnOnclik"
-            android:background="@drawable/refresh" />
+            android:layout_marginRight="10dp" 
+            android:background="@drawable/refresh_selector" />
 
     </RelativeLayout>
 

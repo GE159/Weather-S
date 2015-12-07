@@ -1,11 +1,5 @@
 package com.gwk.weathers.service;
 
-import com.gwk.weathers.activity.ChooseAreaActivity;
-import com.gwk.weathers.app.WeatherActivity;
-import com.gwk.weathers.util.HttpCallbackListener;
-import com.gwk.weathers.util.HttpUtil;
-import com.gwk.weathers.util.Utility;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -14,6 +8,10 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+
+import com.gwk.weathers.util.HttpCallbackListener;
+import com.gwk.weathers.util.HttpUtil;
+import com.gwk.weathers.util.Utility;
 
 /*
  *作者：葛文凯
@@ -55,7 +53,7 @@ public class AutoUpdateService extends Service
 	protected void updateWeather()
 	{
 		SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
-		String weatherCode=prefs.getString(WeatherActivity.WEATHERCODE, "");
+		String weatherCode=prefs.getString(com.gwk.weathers.activity.WeatherActivity.WEATHERCODE, "");
 		String address="http://www.weather.com.cn/data/cityinfo/"+weatherCode+".html";
 		
 		HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {

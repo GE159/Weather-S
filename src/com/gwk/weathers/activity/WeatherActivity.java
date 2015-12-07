@@ -1,6 +1,8 @@
-package com.gwk.weathers.app;
+package com.gwk.weathers.activity;
 
-import com.gwk.weathers.activity.ChooseAreaActivity;
+import com.gwk.weathers.app.R;
+import com.gwk.weathers.app.R.id;
+import com.gwk.weathers.app.R.layout;
 import com.gwk.weathers.db.kLog;
 import com.gwk.weathers.receiver.AutoUpdateReceiver;
 import com.gwk.weathers.util.HttpCallbackListener;
@@ -20,11 +22,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WeatherActivity extends Activity
+public class WeatherActivity extends Activity implements OnClickListener
 {
 	private LinearLayout weatherInfoLayout;
 	private TextView cityNameText;
@@ -59,6 +62,7 @@ public class WeatherActivity extends Activity
 		temp1Text=(TextView) findViewById(R.id.temp1);
 		temp2Text=(TextView) findViewById(R.id.temp2);
 		currentDateText=(TextView) findViewById(R.id.current_date);
+		
 		
 		//处理传入的县级代号
 		String countyCode=getIntent().getStringExtra(COUNTYCODE);
@@ -172,8 +176,10 @@ public class WeatherActivity extends Activity
 		intent.putExtra(COUNTYCODE, countyCode);
 		context.startActivity(intent);
 	}
-	
-	 public void btnOnclik(View v){
+
+	@Override
+	public void onClick(View v)
+	{
 		 switch (v.getId())
 		{
 		case R.id.weather_btn_refresh_weather:

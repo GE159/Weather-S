@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <com.gwk.weathers.widget.CustomViewPager
+        android:id="@+id/mainviewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal" >
+ <RadioGroup
+        android:id="@+id/rg_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/tab_menu_bg"
+        android:orientation="horizontal" >
+   
+
+        <RadioButton
+            android:id="@+id/rb_weather"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_weather"
+            android:text="天气" />
+
+        <RadioButton
+            android:id="@+id/rb_live"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_shijing"
+            android:text="实景" />
+
+        <RadioButton
+            android:id="@+id/rb_me"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_my"
+            android:text="我" />
+    </RadioGroup>
+    
+       <!--  <com.MaskImage
+            android:id="@+id/mainbar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onclcikMainrBar"
+            myapp:image="@drawable/mainbarbackground_green"
+            myapp:mask="@drawable/mainbar1" />
+
+        <com.gwk.tutu.app.widget.MaskImage
+            android:id="@+id/mainbar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onclcikMainrBar"
+            myapp:image="@drawable/mainbarbackground_norlmal"
+            myapp:mask="@drawable/mainbar2" />
+
+        <com.gwk.tutu.app.widget.MaskImage
+            android:id="@+id/mainbar3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onclcikMainrBar"
+            myapp:image="@drawable/mainbarbackground_norlmal"
+            myapp:mask="@drawable/mainbar3" />
+
+        <com.gwk.tutu.app.widget.MaskImage
+            android:id="@+id/mainbar4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onclcikMainrBar"
+            myapp:image="@drawable/mainbarbackground_norlmal"
+            myapp:mask="@drawable/mainbar4" />
+
+        <com.gwk.tutu.app.widget.MaskImage
+            android:id="@+id/mainbar5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onclcikMainrBar"
+            myapp:image="@drawable/mainbarbackground_norlmal"
+            myapp:mask="@drawable/mainbar5" /> -->
+    </LinearLayout>
+
+</LinearLayout>
