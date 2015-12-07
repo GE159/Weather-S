@@ -80,7 +80,7 @@ public class ChooseAreaActivity extends Activity
 	 */
 	private void initView()
 	{	
-		listView = (ListView) findViewById(R.id.list_view);
+		listView = (ListView) findViewById(R.id.listview_choose_area);
 		titTextView = (TextView) findViewById(R.id.title_text);
 		weatherSDB=WeatherSDB.getInstance(this);
 		dataList = new ArrayList<String>();

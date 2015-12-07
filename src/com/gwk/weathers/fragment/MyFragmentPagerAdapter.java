@@ -3,6 +3,7 @@ package com.gwk.weathers.fragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
 /*
@@ -10,7 +11,7 @@ import android.view.ViewGroup;
  *邮箱：651517957@qq.com
  *时间：2015年11月9日上午2:57:13
  */
-public class MyFragmentPagerAdapter extends FragmentPagerAdapter
+public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter
 {
 	private final int PAGER_COUNT = 3;
 	private MainIndexFragment indexFragment=null;

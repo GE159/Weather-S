@@ -19,5 +19,9 @@
     <string name="Setting_manual_clearCache">清除缓存</string>
     <string name="hot">专题</string>
     <string name="live_view">时景</string>
+     <string name="border_top">Border Top</string>
+    <string name="border_bottom">Border Bottom</string>
+    <string name="image_url">Image Url</string>
+    
 
 </resources>
