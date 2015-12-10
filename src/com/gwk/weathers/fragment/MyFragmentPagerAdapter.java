@@ -14,14 +14,16 @@ import android.view.ViewGroup;
 public class MyFragmentPagerAdapter extends FragmentStatePagerAdapter
 {
 	private final int PAGER_COUNT = 3;
-	private MainIndexFragment indexFragment=null;
+	//private MainIndexFragment indexFragment=null;
+	private MainIndexFragment2 indexFragment=null;
 	private MainliveFragment liveFragment=null;
 	private MainUserFragment userFragment=null;
 
 	public MyFragmentPagerAdapter(FragmentManager fm)
 	{
 		super(fm);
-		indexFragment = new MainIndexFragment();
+		//indexFragment = new MainIndexFragment();
+		indexFragment = new MainIndexFragment2();
 		liveFragment = new MainliveFragment();
 		userFragment = new MainUserFragment();
 	}

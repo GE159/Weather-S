@@ -1,23 +1,30 @@
 package com.gwk.weathers.activity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
 import android.view.Window;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import com.gwk.weathers.app.R;
 
 public class LoadingActivity extends Activity
 {
-	ImageView loadingImg, skipImg;
-	AnimationDrawable animationDrawable;
-	Handler handler = new Handler();
+	ImageView imageView;
+	AnimationDrawable butterfly;
+
+	// 蝴蝶坐标
+	private float nextX = 500;
+	private float nextY = 0;
+	private float curX = 500;
+	private float curY = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -30,24 +37,40 @@ public class LoadingActivity extends Activity
 
 	}
 
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg)
+		{
+			// 横向一直向右
+			if (msg.what == 0)
+			{
+				if (nextX < 0)
+				{
+					curX = nextX = 500;
+				} else
+				{
+					nextX -= 10;
+				}
+				// 纵向随机上下
+				nextY = curY + (float) (Math.random() * 10 - 5);
+				TranslateAnimation anim = new TranslateAnimation(curX, nextX,
+						curY, nextY);
+				curX = nextX;
+				curY = nextY;
+				anim.setDuration(200);
+				imageView.startAnimation(anim);
+			}
+		}
+	};
+
 	/**
 	 * 初始化控件
 	 */
 	private void initView()
 	{
-		loadingImg = (ImageView) findViewById(R.id.loading_img);
-		loadingImg.setImageResource(R.animator.animation_pull_refresh_feiji_flying);
-		skipImg = (ImageView) findViewById(R.id.loading_skip);
-		skipImg.setOnClickListener(new OnClickListener() {
+		imageView = (ImageView) findViewById(R.id.na_butterfly);
+		// loadingImg.setImageResource(R.animator.na_butterfly_list);
 
-			@Override
-			public void onClick(View v)
-			{
-				startActivity(new Intent(LoadingActivity.this,
-						ChooseAreaActivity.class));
-				finish();
-			}
-		});
 	}
 
 	/**
@@ -55,8 +78,17 @@ public class LoadingActivity extends Activity
 	 */
 	private void initLoadingImg()
 	{
-		animationDrawable = (AnimationDrawable) loadingImg.getDrawable();
-		animationDrawable.start();
+		butterfly = (AnimationDrawable) imageView.getBackground();
+
+		butterfly.start();
+		new Timer().schedule(new TimerTask() {
+
+			@Override
+			public void run()
+			{
+				handler.sendEmptyMessage(0);
+			}
+		}, 0, 150);
 
 		Thread thread = new Thread(new Runnable() {
 
@@ -98,11 +130,10 @@ public class LoadingActivity extends Activity
 	@Override
 	public void finish()
 	{
-		animationDrawable.stop();
-		//animationDrawable.setCallback(null);
-		animationDrawable = null;
-		loadingImg = skipImg = null;
+		butterfly.stop();
+		// animationDrawable.setCallback(null);
+		butterfly = null;
 		super.finish();
 	}
 
-	}
+}

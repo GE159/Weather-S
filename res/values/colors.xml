@@ -15,6 +15,7 @@
     <color name="aqi_sort_color">#ffffffff</color>
     <color name="aqi_sort_focuse">#7f000000</color>
     <color name="aqi_sort_press">#7f000000</color>
+    <color name="alpha_white">#ccffffff</color>
     <color name="black">#ff000000</color>
     <color name="black_10p">#1a000000</color>
     <color name="black_15p">#26000000</color>
@@ -55,6 +56,7 @@
     <color name="common_radio_group_text_selected">#ff0097e0</color>
     <color name="common_white">#ffffffff</color>
     <color name="common_white_background">#fff2f2f2</color>
+    <color name="color_driver">#33ffffff</color>
     <color name="daily_detail_blue">#ff455d83</color>
     <color name="deep_blue">#ff1e7e84</color>
     <color name="edittext_imput">#fff3f3f3</color>

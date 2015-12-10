@@ -19,9 +19,14 @@
     <string name="Setting_manual_clearCache">清除缓存</string>
     <string name="hot">专题</string>
     <string name="live_view">时景</string>
-     <string name="border_top">Border Top</string>
+    <string name="border_top">Border Top</string>
     <string name="border_bottom">Border Bottom</string>
     <string name="image_url">Image Url</string>
-    
+    <string name="title_activity_city">CityActivity</string>
+    <string name="double_dash">暂无</string>
+    <string name="pollution_index">--</string>
+    <string name="pollute_index">轻度污染</string>
+    <string name="nothing" />
+    <string name="publish_text">发布</string>
 
 </resources>

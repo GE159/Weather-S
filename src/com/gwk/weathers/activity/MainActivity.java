@@ -2,6 +2,7 @@ package com.gwk.weathers.activity;
 
 import com.gwk.weathers.app.R;
 import com.gwk.weathers.fragment.MainIndexFragment;
+import com.gwk.weathers.fragment.MainIndexFragment2;
 import com.gwk.weathers.fragment.MainUserFragment;
 import com.gwk.weathers.fragment.MainliveFragment;
 import com.gwk.weathers.fragment.MyFragmentPagerAdapter;
@@ -31,7 +32,9 @@ public class MainActivity extends FragmentActivity implements
 	private MyFragmentPagerAdapter mAdapter;
 	private FragmentManager fm;
 	private FragmentTransaction ft;
-	private MainIndexFragment indexFragment;
+//	private MainIndexFragment indexFragment;
+	private MainIndexFragment2 indexFragment;
+	
 	private MainliveFragment liveFragment;
 	private MainUserFragment userFragment;
 

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="MaskImage">
-       <attr name="image" format="reference" />
+        <attr name="image" format="reference" />
         <attr name="mask" format="reference" />
     </declare-styleable>
+    <declare-styleable name="SlidingMenu">
+        <attr name="rightPadding" format="dimension" />
+    </declare-styleable>
+
 </resources>

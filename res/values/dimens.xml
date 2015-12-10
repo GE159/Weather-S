@@ -215,12 +215,15 @@
     <dimen name="topic_detail_content_padding_left">10.0dip</dimen>
     <dimen name="topic_detail_face_size">31.0dip</dimen>
     <dimen name="topic_divider">5.0dip</dimen>
+    <dimen name="today_temp">160.0sp</dimen>
     <dimen name="tutorial_botome_demen">90.0dip</dimen>
     <dimen name="tutorial_botome_top">165.0dip</dimen>
     <dimen name="underline_text_size">17.0dip</dimen>
     <dimen name="unusual_weather_height">300.0dip</dimen>
     <dimen name="unusual_weather_qr">115.0dip</dimen>
     <dimen name="unusual_weather_width">258.0dip</dimen>
+    <dimen name="wid_temperatuer_num">65.0dip</dimen>
+    <dimen name="heig_temperatuer_num">100.0dip</dimen>
     <dimen name="weather_current_info_size_normal">18.0dip</dimen>
     <dimen name="weather_current_layout_margin_left">10.0dip</dimen>
     <dimen name="weather_third_ad_height">60.0dip</dimen>
