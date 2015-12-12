@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gwk.weathers.activity.ChooseAreaActivity;
-import com.gwk.weathers.activity.Myconfig;
 import com.gwk.weathers.activity.WeatherActivity;
+import com.gwk.weathers.app.Myconfig;
 import com.gwk.weathers.app.R;
 import com.gwk.weathers.db.kLog;
 import com.gwk.weathers.receiver.AutoUpdateReceiver;

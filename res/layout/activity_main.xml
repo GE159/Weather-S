@@ -16,13 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        android:gravity="center"
         android:orientation="horizontal" >
 
         <RadioGroup
             android:id="@+id/rg_tab_bar"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
             android:background="@drawable/tab_menu_bg"
             android:orientation="horizontal" >
 
@@ -30,19 +30,19 @@
                 android:id="@+id/rb_weather"
                 style="@style/tab_menu_item"
                 android:drawableTop="@drawable/tab_menu_weather"
-                android:text="天气" />
+                android:text="@string/weather" />
 
             <RadioButton
                 android:id="@+id/rb_live"
                 style="@style/tab_menu_item"
                 android:drawableTop="@drawable/tab_menu_shijing"
-                android:text="实景" />
+                android:text="@string/liveimage" />
 
             <RadioButton
                 android:id="@+id/rb_me"
                 style="@style/tab_menu_item"
                 android:drawableTop="@drawable/tab_menu_my"
-                android:text="我" />
+                android:text="@string/me" />
         </RadioGroup>
     </LinearLayout>
 

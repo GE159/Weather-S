@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_menu_bg"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_list_recent_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dip"
+            android:alpha="255"
+            android:gravity="center"
+            android:text="@string/today"
+            android:textColor="@android:color/white"
+            android:textSize="16.0dip" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/iv_list_recent_cond"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:src="@drawable/ic_recent3days_16" />
+
+                <TextView
+                    android:id="@+id/tv_list_recent_condTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18.0dip"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dip"
+                    android:alpha="255"
+                    android:text="小雨"
+                    android:textColor="@android:color/white"
+                    android:textSize="16.0dip" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_list_rencent_tmp"
+                android:layout_width="wrap_content"
+                android:layout_height="18.0dip"
+                android:layout_gravity="center"
+                android:alpha="255"
+                android:text="9°C~13°C"
+                android:textColor="@android:color/white"
+                android:textSize="16.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/color_driver" />
+
+</LinearLayout>

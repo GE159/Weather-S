@@ -15,7 +15,6 @@
     <string name="msp_action_settings">设置</string>
     <string name="owner_share_account">分享账号</string>
     <string name="settings">设置</string>
-    <string name="my_airnut">我的空气果</string>
     <string name="Setting_manual_clearCache">清除缓存</string>
     <string name="hot">专题</string>
     <string name="live_view">时景</string>
@@ -28,5 +27,14 @@
     <string name="pollute_index">轻度污染</string>
     <string name="nothing" />
     <string name="publish_text">发布</string>
+    <string name="feeltemp">体感温度</string>
+    <string name="mp2_5">PM2.5:</string>
+    <string name="today">今天</string>
+    <string name="date_week">12月10日 周四</string>
+    <string name="tomorrow">明天</string>
+    <string name="houtian">后天</string>
+    <string name="weather">天气</string>
+    <string name="liveimage">实景</string>
+    <string name="me">我</string>
 
 </resources>

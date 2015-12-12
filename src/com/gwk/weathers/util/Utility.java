@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+import com.gwk.weathers.app.Myconfig;
 import com.gwk.weathers.db.WeatherSDB;
 import com.gwk.weathers.model.City;
 import com.gwk.weathers.model.County;
@@ -151,6 +152,23 @@ public class Utility
 		editor.putString("temp2", temp2);
 		editor.putString("weather_desp", weatherDesp);
 		editor.putString("publish_time", publishTime);
+		editor.putString("current_date", sdf.format(new Date()));
+		editor.commit();
+	}
+	
+	/**
+	 * 将服务器返回的所有天气信息的JSON语句存储到SharedPreferences中
+	 * @param context
+	 * @param response
+	 */
+	public static void saveWeatherInfo(Context context,String cityNamestr,String response)
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日", Locale.CHINA);
+		SharedPreferences.Editor editor = PreferenceManager
+				.getDefaultSharedPreferences(context).edit();
+		editor.putBoolean("city_selected", true);
+		editor.putString(Myconfig.WEATHERJSON, response);
+		editor.putString(Myconfig.COUNTYCODE, cityNamestr);
 		editor.putString("current_date", sdf.format(new Date()));
 		editor.commit();
 	}

@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.gwk.weathers.adapter.MyHotSpecialArrayAdapter;
+import com.gwk.weathers.adapter.MyHotSpecialAdapter;
 import com.gwk.weathers.app.R;
 import com.gwk.weathers.model.HotSpecial;
 import com.gwk.weathers.widget.MyLaodListView;
@@ -31,7 +31,7 @@ public class PicHotFragment extends Fragment implements ILoadListener
 	View picHotFragment;
 	MyLaodListView hotListview;
 	ArrayList<HotSpecial> hotspecials;
-	MyHotSpecialArrayAdapter madapter;
+	MyHotSpecialAdapter madapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,7 +113,7 @@ public class PicHotFragment extends Fragment implements ILoadListener
 			// 接口
 			hotListview.setInterface(this);
 
-			madapter = new MyHotSpecialArrayAdapter(getActivity(), hotspecials);
+			madapter = new MyHotSpecialAdapter(getActivity(), hotspecials);
 			hotListview.setAdapter(madapter);
 		} else
 		{

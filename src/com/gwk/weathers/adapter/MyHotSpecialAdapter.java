@@ -22,11 +22,11 @@ import com.gwk.weathers.model.HotSpecial;
  *邮箱：651517957@qq.com
  *时间：2015年12月7日下午6:54:13
  */
-public class MyHotSpecialArrayAdapter extends BaseAdapter {
+public class MyHotSpecialAdapter extends BaseAdapter {
 	ArrayList<HotSpecial> hotSpecials;
 	LayoutInflater inflater;
 
-	public MyHotSpecialArrayAdapter(Context context, ArrayList<HotSpecial> hotSpecials) {
+	public MyHotSpecialAdapter(Context context, ArrayList<HotSpecial> hotSpecials) {
 		this.hotSpecials = hotSpecials;
 		this.inflater = LayoutInflater.from(context);
 	}

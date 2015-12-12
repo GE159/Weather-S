@@ -1,5 +1,13 @@
 package com.gwk.weathers.activity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.androidannotations.annotations.EActivity;
+
+
+
+import com.gwk.weathers.app.Myconfig;
 import com.gwk.weathers.app.R;
 import com.gwk.weathers.fragment.MainIndexFragment;
 import com.gwk.weathers.fragment.MainIndexFragment2;
@@ -15,10 +23,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+
 
 public class MainActivity extends FragmentActivity implements
 		OnCheckedChangeListener
@@ -99,10 +110,41 @@ public class MainActivity extends FragmentActivity implements
 	 * 传入Countcode,启动WeatherActivity界面
 	 * @param countyCode
 	 */
-	public static void StartWeatherActivity(Context context,String countyCode)
+	public static void StartMainActivity(Context context,String countyCode)
 	{
 		Intent intent=new Intent(context,MainActivity.class);
 		intent.putExtra(Myconfig.COUNTYCODE, countyCode);
 		context.startActivity(intent);
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		if (keyCode == KeyEvent.KEYCODE_BACK)
+			exitBy2Click();
+
+		 return false;
+	}
+
+	/**
+	 * 双击退出
+	 */
+	private static Boolean isExit = Boolean.valueOf(false);//是否退出，默认为false
+
+	private void exitBy2Click()
+	{
+		if (!isExit)
+		{
+			isExit = Boolean.valueOf(true);
+			Toast.makeText(this, "再按一次退出程序", 0).show();
+			new Timer().schedule(new TimerTask() {
+				public void run()
+				{
+					MainActivity.isExit = Boolean.valueOf(false);
+				}
+			}, 2000L);// 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+			return;
+		}
+		finish();
+		System.exit(0);
 	}
 }

@@ -3,6 +3,7 @@ package com.gwk.weathers.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gwk.weathers.app.Myconfig;
 import com.gwk.weathers.app.R;
 import com.gwk.weathers.db.WeatherSDB;
 import com.gwk.weathers.db.kLog;
@@ -103,8 +104,10 @@ public class ChooseAreaActivity extends Activity
 					queryCounties();
 				} else if (currentLevel == LEVEL_COUNTY)
 				{
-					String countyCode=countieslist.get(position).getCountyCode();
-					MainActivity.StartWeatherActivity(ChooseAreaActivity.this,countyCode);
+					//String countyCode=countieslist.get(position).getCountyCode();
+					String countyCode=countieslist.get(position).getCountyName();
+					
+					MainActivity.StartMainActivity(ChooseAreaActivity.this,countyCode);
 					finish();
 				}
 			}
@@ -317,23 +320,26 @@ public class ChooseAreaActivity extends Activity
 
 	}
 	/**
+	 * 是否从WeatherActivity跳转来
+	 */
+	private boolean isFromWeatherActivity;
+	
+	/**
 	 * 判断当前是否已经选择过城市,是否跳转到WeatherActivity
 	 */
 	private void isCitySelected()
 	{
 		isFromWeatherActivity=getIntent().getBooleanExtra(Myconfig.FROMWEATHERFRAG, false);
 		SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+		//已经选择了城市，而且不是从WeatherActivity跳转过来的，直接跳转到WeatherActivity
 		if (prefs.getBoolean("city_selected", false)&&!isFromWeatherActivity)
 		{
-			Intent intent=new Intent(this, MainActivity.class);
+			Intent intent=new Intent(this,MainActivity.class);
 			startActivity(intent);
 			finish();
 			return;
 		}
 	}
 	
-	/**
-	 * 是否从WeatherActivity跳转来
-	 */
-	private boolean isFromWeatherActivity;
+	
 }

@@ -18,7 +18,7 @@ public class HttpUtil
 {	
 	
 	/**
-	 * 向服务器发送请求获取全国省份数据信息
+	 * 向服务器发送请求获取数据信息
 	 */
 	public static void sendHttpRequest(final String address,
 			final HttpCallbackListener listener)
