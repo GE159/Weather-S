@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res/com.gwk.weathers.app"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:rightPadding="136dip"
+    app:rightPadding="120dip"
     >
 
     <LinearLayout
@@ -21,6 +21,8 @@
             <ListView
                 android:id="@+id/index_recentweather_listview"
                 android:layout_width="match_parent"
+                android:scrollbars="none"
+                android:background="@drawable/list_menu_bg"
                 android:layout_height="match_parent" >
             </ListView>
         </LinearLayout>

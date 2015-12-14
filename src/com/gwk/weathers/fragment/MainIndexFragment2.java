@@ -10,10 +10,13 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,6 +25,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.gwk.weathers.activity.ChooseAreaActivity;
+import com.gwk.weathers.activity.TendencyActivity;
 import com.gwk.weathers.adapter.RecentweatherItemAdapter;
 import com.gwk.weathers.app.Myconfig;
 import com.gwk.weathers.app.R;
@@ -99,9 +103,11 @@ public class MainIndexFragment2 extends Fragment implements OnClickListener
 	 */
 	private ListView recentWeatherList;
 	// Service对象
+
 	private String cityNamestr;
 	private String httpUrl;
-	private IWeather weather;
+	private IWeather getweather;
+
 	public static final int show_response = 0;
 	/**
 	 * 请求返回的Json语句
@@ -116,6 +122,7 @@ public class MainIndexFragment2 extends Fragment implements OnClickListener
 				container, false);
 		initView(weatherFragmentView);
 		getDate();
+
 		return weatherFragmentView;
 	}
 
@@ -177,31 +184,31 @@ public class MainIndexFragment2 extends Fragment implements OnClickListener
 			switch (msg.what)
 			{
 			case show_response:
-				IWeather weather = (IWeather) msg.obj;
+				getweather = (IWeather) msg.obj;
 
 				tempanddate.setVisibility(View.VISIBLE);
 
-				cityname.setText(weather.getCity());
-				publishTime.setText(weather.getRefreshDate()
-						+ weather.getRefreshTime());
-				todayWeatherTxt.setText(weather.getTodayWeather());
+				cityname.setText(getweather.getCity());
+				publishTime.setText(getweather.getRefreshDate()
+						+ getweather.getRefreshTime());
+				todayWeatherTxt.setText(getweather.getTodayWeather());
 				todayWeatherIc.setImageBitmap(WeatherPic.getPic(getContext(),
-						weather.getPicIndex(), 0));
+						getweather.getPicIndex(), 0));
 
-				todayWeatherTmp.setText(weather.getComfortable());
-				feelTemp.setText(weather.getComforfeeltemp());
+				todayWeatherTmp.setText(getweather.getComfortable());
+				feelTemp.setText(getweather.getComforfeeltemp());
 
-				if (!TextUtils.isEmpty(weather.getPm25Polution()))
+				if (!TextUtils.isEmpty(getweather.getPm25Polution()))
 				{
 					aqlinfoTB.setVisibility(View.VISIBLE);
-					mpPolution.setText(weather.getPm25Polution() + " "
-							+ weather.getQlty());
+					mpPolution.setText(getweather.getPm25Polution() + " "
+							+ getweather.getQlty());
 				}
 
 				// nowTmp.setText(weather.getTodayTemperature());
-				if (!TextUtils.isEmpty(weather.getTodayTemperature()))
+				if (!TextUtils.isEmpty(getweather.getTodayTemperature()))
 				{
-					int noTmpint = Integer.parseInt(weather
+					int noTmpint = Integer.parseInt(getweather
 							.getTodayTemperature());
 					if (noTmpint < 0)
 					{
@@ -223,10 +230,10 @@ public class MainIndexFragment2 extends Fragment implements OnClickListener
 					// 未来四天天气
 					for (int i = 0; i < 3; i++)
 					{
-						String weatx = weather.getWeather().get(i);
-						String weama = weather.getTemperatureMax().get(i);
-						String weami = weather.getTemperatureMin().get(i);
-						int weapic = weather.getTopPic().get(i);
+						String weatx = getweather.getWeather().get(i);
+						String weama = getweather.getTemperatureMax().get(i);
+						String weami = getweather.getTemperatureMin().get(i);
+						int weapic = getweather.getTopPic().get(i);
 						switch (i)
 						{
 						case 0:
@@ -252,14 +259,22 @@ public class MainIndexFragment2 extends Fragment implements OnClickListener
 							break;
 						}
 					}
-
+					recentWeatherList.setAdapter(new RecentweatherItemAdapter(
+							getActivity(),
+							R.layout.recentweather_fgin_list_item, getweather
+									.getRecentWeatherList()));
 					recentWeatherList
-							.setAdapter(new RecentweatherItemAdapter(
-									getActivity(),
-									R.layout.recentweather_fgin_list_item,
-									weather.getRecentWeatherList()));
-					
+							.setOnItemClickListener(new OnItemClickListener() {
+
+								@Override
+								public void onItemClick(AdapterView<?> parent,
+										View view, int position, long id)
+								{
+									TendencyActivity.StartTendencyActivity(getActivity(), getweather);
+								}
+							});
 				}
+
 				break;
 
 			default:
@@ -371,7 +386,7 @@ public class MainIndexFragment2 extends Fragment implements OnClickListener
 				.getDefaultSharedPreferences(getActivity());
 
 		strResult = prefs.getString(Myconfig.WEATHERJSON, "");
-		weather = MyJSON2Weather.parseJson(strResult);
+		IWeather weather = MyJSON2Weather.parseJson(strResult);
 
 		Message message = new Message();
 		message.what = show_response;

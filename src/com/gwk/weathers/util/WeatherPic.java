@@ -1,7 +1,5 @@
 package com.gwk.weathers.util;
 
-
-
 import com.gwk.weathers.app.R;
 
 import android.content.Context;
@@ -246,5 +244,7 @@ public class WeatherPic {
 		}
 		return bmp;
 	}
-	
+	public static Bitmap getSmallPic(Context c, int index, int type){
+		return Bitmap.createScaledBitmap(getPic(c, index, type), Constants.picSize, Constants.picSize, true);
+	}
 }

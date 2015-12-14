@@ -1,10 +1,13 @@
 package com.gwk.weathers.model;
+
+import java.io.Serializable;
+
 /*
  *作者：葛文凯
  *邮箱：651517957@qq.com
  *时间：2015年12月12日下午1:07:25
  */
-public class RecentWeather
+public class RecentWeather implements Serializable
 {
 	/**
 	 * 当地日期

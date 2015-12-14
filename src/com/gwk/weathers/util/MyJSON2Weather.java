@@ -2,6 +2,7 @@ package com.gwk.weathers.util;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -93,15 +94,14 @@ public class MyJSON2Weather
 							.get(j);
 					
 					String jdate = jdailyObject.getString("date");
-					recen.setDateStr(jdate);
+					
+					recen.setDateStr(getDate(jdate));
 					
 					JSONObject jcond = (JSONObject) jdailyObject.get("cond");
 					int code_d = jcond.getInt("code_d");
 					int code_n = jcond.getInt("code_n");
 					String txt_d = jcond.getString("txt_d");
-
-					topPic.add(code_d);
-					lowPic.add(code_n);
+					
 					recen.setCondCode(code_d);
 					weatherList.add(txt_d);
 					recen.setCondTxt(txt_d);
@@ -109,8 +109,13 @@ public class MyJSON2Weather
 					JSONObject jtmp = (JSONObject) jdailyObject.get("tmp");
 					String max = jtmp.getString("max") + "℃";
 					String min = jtmp.getString("min") + "℃";
-					tempListMax.add(max);
-					tempListMin.add(min);
+					if (j<4)
+					{
+						topPic.add(code_d);
+						lowPic.add(code_n);
+						tempListMax.add(max);
+						tempListMin.add(min);
+					}
 					recen.setTmpMax(max);
 					recen.setTmpMin(min);
 
@@ -174,14 +179,26 @@ public class MyJSON2Weather
 	private static String getDate(){
 		SimpleDateFormat sdf=new SimpleDateFormat("MM月dd日 EEE", Locale.CHINA);  
 	    String date=sdf.format(new java.util.Date()); 
-	    System.out.println(date);
-		return date;
+	    return date;
 	}
+
+	private static String getDate(String jdate)
+	{
+		try
+		{
+			String formater = "yyyy-MM-dd";
+			SimpleDateFormat format = new SimpleDateFormat(formater);
+			Date date = format.parse(jdate);
+			format.applyPattern("MM-dd EE");
+			return format.format(date);
+		} catch (Exception ex)
+		{
+			return "";
+		}}
 	private static String getTime(){
 	    SimpleDateFormat sdf=new SimpleDateFormat("HH:mm", Locale.CHINA);  
 	    String time=sdf.format(new java.util.Date()) + " " + "发布"; 
-	    System.out.println(time);
-		return time;
+	    return time;
 	}
 	private static String getWeek(){
 //		SimpleDateFormat sdf=new SimpleDateFormat("EE", Locale.CHINA);  

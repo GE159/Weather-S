@@ -36,5 +36,6 @@
     <string name="weather">天气</string>
     <string name="liveimage">实景</string>
     <string name="me">我</string>
+    <string name="title_activity_tendency">TendencyActivity</string>
 
 </resources>

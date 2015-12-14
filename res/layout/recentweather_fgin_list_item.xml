@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_menu_bg"
+    
     android:gravity="center"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="89dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
         android:gravity="center"
         android:orientation="horizontal" >
 
@@ -17,7 +19,7 @@
             android:id="@+id/tv_list_recent_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="32dip"
+            android:layout_marginRight="24dip"
             android:alpha="255"
             android:gravity="center"
             android:text="@string/today"

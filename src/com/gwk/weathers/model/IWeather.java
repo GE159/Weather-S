@@ -1,19 +1,20 @@
 package com.gwk.weathers.model;
 
+import java.io.Serializable;
 import java.util.List;
-
 
 /*
  *作者：葛文凯
  *邮箱：651517957@qq.com
  *时间：2015年12月11日上午9:40:45
  */
-public class IWeather
+public class IWeather implements Serializable
 {
 	private boolean isNight;
 	private int picIndex;//今日天气图片编号
 	
 	private String city;
+	private String cityid;
 	private String refreshDate;
 	private String refreshTime;//发布时间
 	private String refreshWeek;
@@ -184,6 +185,14 @@ public class IWeather
 	public void setRecentWeatherList(List<RecentWeather> recentWeatherList)
 	{
 		this.recentWeatherList = recentWeatherList;
+	}
+	public String getCityid()
+	{
+		return cityid;
+	}
+	public void setCityid(String cityid)
+	{
+		this.cityid = cityid;
 	}
 	
 }
